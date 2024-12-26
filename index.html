@@ -52,7 +52,7 @@
                 document.getElementById("loading1").innerHTML = "<p>Redirecting to your Google Play Store...</p>";
                 setTimeout(function() {
                     window.location.href = "https://play.google.com/store/apps/details?id=com.cruze";
-                }, 4000);  // Delay before redirecting
+                }, 2000);  // Delay before redirecting
             } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
                 // For iOS, show "Coming Soon" message
                 document.getElementById("loading").innerHTML = "<p id='coming-soon'>Coming Soon! App will be available shortly.</p>";
@@ -61,12 +61,12 @@
                   //  document.getElementById("loading1").innerHTML = "<p>Redirecting to your App Store...</p>";
                     document.getElementById("loading1").innerHTML = "<p></p>";
                     // Redirect to the App Store (update with actual app URL when available)
-                 }, 4000);  // Show Coming Soon message for 4 seconds before redirecting
+                 }, 2000);  // Show Coming Soon message for 4 seconds before redirecting
             } else {
                 // Default URL for non-mobile devices (e.g., desktop)
                 setTimeout(function() {
                     window.location.href = "https://cruze.asia/";
-                }, 4000);  // Delay before redirecting
+                }, 2000);  // Delay before redirecting
             }
         }
 
@@ -86,7 +86,7 @@
     <!-- Optional message -->
 	 <div id="loading1">
    
-    <h1>Redirecting...</h1>
+    <h1></h1>
 	  </div>
 </body>
 </html>
