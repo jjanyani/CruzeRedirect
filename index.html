@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Your Cruze</title>
+    <style>
+        /* Center the logo and the text on the page */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 150px;
+            height: auto;
+        }
+    </style>
+    <script>
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        if (/android/i.test(userAgent)) {
+            window.location.href = "https://play.google.com/store/apps/details?id=com.cruze";
+        } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+            window.location.href = "https://apps.apple.com/us/app/example-app/id1234567890";
+        } else {
+            window.location.href = "https://cruze.asia/";  // Default URL if not detected
+        }
+    </script>
+</head>
+<body>
+    <!-- Reference your local logo image -->
+    <img src="logo.png" alt="Cruze Logo">
+    <h1>Redirecting...</h1>
+</body>
+</html>
