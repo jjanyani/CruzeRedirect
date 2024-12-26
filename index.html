@@ -48,22 +48,24 @@
 
             // Check if device is Android, iOS, or other
             if (/android/i.test(userAgent)) {
-                // Redirect to Google Play Store
+                // For Android, update the message and redirect to Google Play Store
+                document.getElementById("loading1").innerHTML = "<p>Redirecting to your Google Play Store...</p>";
                 setTimeout(function() {
                     window.location.href = "https://play.google.com/store/apps/details?id=com.cruze";
-                }, 2000);  // Adjust the delay as needed
+                }, 4000);  // Delay before redirecting
             } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
-                // For iOS, show "Coming Soon" before redirecting
+                // For iOS, show "Coming Soon" message
                 document.getElementById("loading").innerHTML = "<p id='coming-soon'>Coming Soon! App will be available shortly.</p>";
                 
                 setTimeout(function() {
-                    window.location.href = "https://apps.apple.com/in/app/uber-request-a-ride/id368677368";  // Dummy link, replace with actual when available
-                }, 4000);  // Show Coming Soon message for 4 seconds
+                    document.getElementById("loading1").innerHTML = "<p>Redirecting to your App Store...</p>";
+                    // Redirect to the App Store (update with actual app URL when available)
+                 }, 4000);  // Show Coming Soon message for 4 seconds before redirecting
             } else {
-                // Default URL for non-mobile devices
+                // Default URL for non-mobile devices (e.g., desktop)
                 setTimeout(function() {
                     window.location.href = "https://cruze.asia/";
-                }, 4000);
+                }, 4000);  // Delay before redirecting
             }
         }
 
@@ -74,13 +76,16 @@
 <body>
     <!-- Loading Message or Image (This is shown first) -->
     <div id="loading">
-        <p>Redirecting to download your Cruze App...</p>
+        <p>Welcome to download your Cruze App...</p>
     </div>
 
     <!-- Reference your local logo image -->
     <img src="logo.png" alt="Cruze Logo">
 
     <!-- Optional message -->
+	 <div id="loading1">
+   
     <h1>Redirecting...</h1>
+	  </div>
 </body>
 </html>
