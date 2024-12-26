@@ -32,25 +32,39 @@
             font-size: 18px;
             color: #555;
         }
+        /* Optional Coming Soon style */
+        #coming-soon {
+            color: #d9534f;
+            font-weight: bold;
+        }
     </style>
     <script>
         // Function to handle redirection with a delay
         function handleRedirection() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
             // Show loading message/image
             document.getElementById("loading").style.display = "block";
 
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-            // Delay for smooth transition (1.5 seconds)
-            setTimeout(function() {
-                if (/android/i.test(userAgent)) {
+            // Check if device is Android, iOS, or other
+            if (/android/i.test(userAgent)) {
+                // Redirect to Google Play Store
+                setTimeout(function() {
                     window.location.href = "https://play.google.com/store/apps/details?id=com.cruze";
-                } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
-                    window.location.href = "https://apps.apple.com/in/app/uber-request-a-ride/id368677368";
-                } else {
-                    window.location.href = "https://cruze.asia/";  // Default URL if not detected
-                }
-            }, 6000);  // Adjust the delay time as needed
+                }, 2000);  // Adjust the delay as needed
+            } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+                // For iOS, show "Coming Soon" before redirecting
+                document.getElementById("loading").innerHTML = "<p id='coming-soon'>Coming Soon! App will be available shortly.</p>";
+                
+                setTimeout(function() {
+                    window.location.href = "https://apps.apple.com/in/app/uber-request-a-ride/id368677368";  // Dummy link, replace with actual when available
+                }, 4000);  // Show Coming Soon message for 4 seconds
+            } else {
+                // Default URL for non-mobile devices
+                setTimeout(function() {
+                    window.location.href = "https://cruze.asia/";
+                }, 4000);
+            }
         }
 
         // Call redirection function on page load
@@ -60,7 +74,7 @@
 <body>
     <!-- Loading Message or Image (This is shown first) -->
     <div id="loading">
-        <p>Redirecting you to download your Cruize App...</p>
+        <p>Redirecting to download your Cruze App...</p>
     </div>
 
     <!-- Reference your local logo image -->
