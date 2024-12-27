@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Your Cruze</title>
+    <title>Cruze Asia</title>
     <style>
         /* Center the logo and the text on the page */
         body {
@@ -16,15 +16,32 @@
             background-color: #f4f4f4;
             font-family: Arial, sans-serif;
         }
+
         h1 {
             font-size: 24px;
             margin-top: 20px;
             color: #333;
         }
+
         img {
             max-width: 150px;
             height: auto;
+            opacity: 0; /* Start hidden for animation */
+            animation: fadeInScale 2s ease-out forwards; /* Apply fade and scale animation */
         }
+
+        /* Animation to fade and scale the image */
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8); /* Start small */
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1); /* End at normal size */
+            }
+        }
+
         /* Style for the loading text or image */
         #loading {
             display: block;
@@ -32,10 +49,35 @@
             font-size: 18px;
             color: #555;
         }
+
         /* Optional Coming Soon style */
         #coming-soon {
             color: #d9534f;
             font-weight: bold;
+        }
+
+        /* Animation for text fading in */
+        #loading1 {
+            opacity: 0; /* Start with text hidden */
+            animation: fadeInText 2s ease-out forwards; /* Apply fade-in effect */
+            animation-delay: 2s; /* Delay the text animation to show after image */
+        }
+
+        /* Animation for the loading text */
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Style for the images in #loading1 */
+        #loading1 img {
+            max-width: 200px;
+            margin-top: 10px;
+            display: block;
         }
     </style>
     <script>
@@ -49,19 +91,25 @@
             // Check if device is Android, iOS, or other
             if (/android/i.test(userAgent)) {
                 // For Android, update the message and redirect to Google Play Store
-                document.getElementById("loading1").innerHTML = "<p>Redirecting to your Google Play Store...</p>";
+                document.getElementById("loading").innerHTML = "<p>Please stand by while we open the Google Play Store for you.</p>";
+
+                // Show Google Play Store image
+                document.getElementById("loading1").innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Google_Play_Logo_2012.png" alt="Google Play Store">';
+
                 setTimeout(function() {
                     window.location.href = "https://play.google.com/store/apps/details?id=com.cruze";
                 }, 2000);  // Delay before redirecting
             } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
-                // For iOS, show "Coming Soon" message
-                document.getElementById("loading").innerHTML = "<p id='coming-soon'>Coming Soon! App will be available shortly.</p>";
-                
+                // For iOS, show "Coming Soon" message and App Store image
+                document.getElementById("loading").innerHTML = "<p id='coming-soon'>The Cruize App is almost here – coming soon!</p>";
+
+                // Show App Store image
+                document.getElementById("loading1").innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Apple_App_Store_%28logo%29.svg" alt="App Store">';
+
                 setTimeout(function() {
-                  //  document.getElementById("loading1").innerHTML = "<p>Redirecting to your App Store...</p>";
-                    document.getElementById("loading1").innerHTML = "<p></p>";
-                    // Redirect to the App Store (update with actual app URL when available)
-                 }, 2000);  // Show Coming Soon message for 4 seconds before redirecting
+                    document.getElementById("loading").innerHTML = "<p></p>";
+                    // You can add redirection to the App Store here when it's available
+                }, 2000);  // Show Coming Soon message for 2 seconds before redirecting
             } else {
                 // Default URL for non-mobile devices (e.g., desktop)
                 setTimeout(function() {
@@ -75,18 +123,22 @@
     </script>
 </head>
 <body>
-    <!-- Loading Message or Image (This is shown first) -->
-    <div id="loading">
-        <p>Welcome to download your Cruze App...</p>
+    <!-- Optional tagline -->
+    <div id="loading2">
+        <p>Your Ride. Your Fare.</p>
     </div>
 
-    <!-- Reference your local logo image -->
+    <!-- Logo with animation -->
     <img src="logo.png" alt="Cruze Logo">
 
-    <!-- Optional message -->
-	 <div id="loading1">
-   
-    <h1></h1>
-	  </div>
+    <!-- Loading Message or Image (This is shown first) -->
+    <div id="loading">
+        <p></p>
+    </div>
+
+    <!-- Additional Loading Text -->
+    <div id="loading1">
+        <!-- The App Store or Play Store image will be injected here based on platform -->
+    </div>
 </body>
 </html>
