@@ -116,7 +116,8 @@
             }
 
             #loading2 p {
-                font-size: 14px; /* Adjust font size for small screens */
+                font-size: 16px; /* Adjust font size for small screens */
+				   font-weight: bold;
             }
         }
 
@@ -141,7 +142,7 @@
 
                 setTimeout(function() {
                     window.location.href = "https://play.google.com/store/apps/details?id=com.cruze";
-                }, 2000);  // Delay before redirecting
+                }, 4000);  // Delay before redirecting
             } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
                 // For iOS, show "Coming Soon" message and App Store image
                 document.getElementById("loading").innerHTML = "<p id='coming-soon'>The Cruize App is almost here – coming soon!</p>";
@@ -154,7 +155,7 @@
                 setTimeout(function() {
                     // document.getElementById("loading").innerHTML = "<p></p>";
                     // You can add redirection to the App Store here when it's available
-                }, 2000);  // Show Coming Soon message for 2 seconds before redirecting
+                }, 4000);  // Show Coming Soon message for 2 seconds before redirecting
             } else {
                 // For non-mobile devices (desktop), show Coming Soon and App Store image
               //  document.getElementById("loading").innerHTML = "<p id='coming-soon'>The Cruize App is almost here – coming soon!</p>";
@@ -166,7 +167,7 @@
                 // Default URL for non-mobile devices (e.g., desktop)
                 setTimeout(function() {
                   window.location.href = "https://cruze.asia/";
-                }, 2000);  // Delay before redirecting
+                }, 4000);  // Delay before redirecting
             }
         }
 
