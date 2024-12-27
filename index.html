@@ -32,6 +32,7 @@
             font-size: 18px;
             color: #555;
             text-align: center;
+			 font-weight: bold;
         }
 
         /* Style for the coming soon message */
@@ -84,7 +85,7 @@
 
         /* Style for the images in #loading1 (App Store/Play Store images) */
         #loading1 img {
-            max-width: 150px; /* Make the images smaller on mobile */
+            max-width: 100px; /* Make the images smaller on mobile */
             margin-top: 10px;
             display: block;
             margin-left: auto;
@@ -117,14 +118,15 @@
 
             #loading {
                 font-size: 16px;
+				 font-weight: bold;
             }
 
             #loading1 img {
-                max-width: 120px; /* Make the images even smaller on mobile */
+                max-width: 100px; /* Make the images even smaller on mobile */
             }
 
             #loading2 p {
-                font-size: 16px; /* Adjust font size for small screens */
+                font-size: 18px; /* Adjust font size for small screens */
 				   font-weight: bold;
             }
         }
@@ -149,7 +151,7 @@
             // Show Google Play Store image
             document.getElementById("loading1").innerHTML = '<img src="images/GooglePlayStore.png" alt="Google Play Store">';
             // Add download text below the image
-            document.getElementById("loading1").innerHTML += '<p>Download available on Google Play Store</p>';
+       //     document.getElementById("loading1").innerHTML += '<p>Download available on Google Play Store</p>';
 
             // Delay redirection to Play Store to match animation
             setTimeout(function() {
@@ -157,29 +159,29 @@
             }, 4000);  // Wait for 4 seconds (2s animation + 2s buffer)
         } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
             // For iOS, show "Coming Soon" message and App Store image
-            document.getElementById("loading").innerHTML = "<p id='coming-soon'>The Cruize App is almost here – coming soon!</p>";
+            document.getElementById("loading").innerHTML = "<p id='coming-soon'>The Cruze App is coming soon on App store!</p>";
 
             // Show App Store image
             document.getElementById("loading1").innerHTML = '<img src="images/AppStore.png" alt="App Store">';
             // Add download text below the image
-            document.getElementById("loading1").innerHTML += '<p>Download available on App Store</p>';
+         //   document.getElementById("loading1").innerHTML += '<p>Download available on App Store</p>';
 
             // Wait for animation then show Coming Soon message and redirect after delay
             setTimeout(function() {
                 // You can add redirection to the App Store here when it's available
             }, 4000);  // Wait for 4 seconds (2s animation + 2s buffer)
         } else {
-            // For non-mobile devices (desktop), show Coming Soon and App Store image
-        //    document.getElementById("loading").innerHTML = "<p id='coming-soon'>The Cruize App is almost here – coming soon!</p>";
+               // For Android, update the message and redirect to Google Play Store
+            document.getElementById("loading").innerHTML = "<p>Please stand by while we open the Google Play Store for you.</p>";
 
-            // Show App Store image
-         //   document.getElementById("loading1").innerHTML = '<img src="images/AppStore.png" alt="App Store">';
-            // Add download text below the image
+            // Show Google Play Store image
+            document.getElementById("loading1").innerHTML = '<img src="images/GooglePlayStore.png" alt="Google Play Store">';
+         // Add download text below the image
           //  document.getElementById("loading1").innerHTML += '<p>Download available on App Store</p>';
 
             // Default URL for non-mobile devices (e.g., desktop)
             setTimeout(function() {
-                window.location.href = "https://cruze.asia/";
+               // window.location.href = "https://cruze.asia/";
             }, 4000);  // Wait for 4 seconds (2s animation + 2s buffer)
         }
     }
