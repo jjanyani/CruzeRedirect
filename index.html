@@ -169,13 +169,14 @@
             // Wait for animation then show Coming Soon message and redirect after delay
             setTimeout(function() {
                 // You can add redirection to the App Store here when it's available
+				window.location.href = "https://cruze.asia/";
             }, 4000);  // Wait for 4 seconds (2s animation + 2s buffer)
         } else {
                // For Android, update the message and redirect to Google Play Store
-            document.getElementById("loading").innerHTML = "<p>Please stand by while we open the Google Play Store for you.</p>";
+          //  document.getElementById("loading").innerHTML = "<p>Please stand by while we open the Google Play Store for you.</p>";
 
             // Show Google Play Store image
-            document.getElementById("loading1").innerHTML = '<img src="images/GooglePlayStore.png" alt="Google Play Store">';
+        //    document.getElementById("loading1").innerHTML = '<img src="images/GooglePlayStore.png" alt="Google Play Store">';
          // Add download text below the image
           //  document.getElementById("loading1").innerHTML += '<p>Download available on App Store</p>';
 
