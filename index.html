@@ -43,12 +43,13 @@
 
         /* Style for the images (Logo and App/Play Store logos) */
         img {
-            max-width: 20%;
+            width: 100%; /* Make images responsive */
+            max-width: 250px; /* Set a maximum size */
             height: auto;
             opacity: 0; /* Start hidden for animation */
             animation: fadeInScale 2s ease-out forwards; /* Apply fade and scale animation */
             display: block;
-            margin: 0 auto;
+            margin: 20px auto;
         }
 
         /* Animation to fade and scale the image */
@@ -68,6 +69,7 @@
             opacity: 0; /* Start with text hidden */
             animation: fadeInText 2s ease-out forwards; /* Apply fade-in effect */
             animation-delay: 2s; /* Delay the text animation to show after image */
+            text-align: center;
         }
 
         /* Animation for the loading text */
@@ -82,7 +84,7 @@
 
         /* Style for the images in #loading1 (App Store/Play Store images) */
         #loading1 img {
-            max-width: 100px;
+            max-width: 150px; /* Make the images smaller on mobile */
             margin-top: 10px;
             display: block;
             margin-left: auto;
@@ -110,7 +112,7 @@
             }
 
             #loading1 img {
-                max-width: 150px; /* Make the images smaller on mobile */
+                max-width: 120px; /* Make the images even smaller on mobile */
             }
 
             #loading2 p {
@@ -150,20 +152,20 @@
                 document.getElementById("loading1").innerHTML += '<p>Download available on App Store</p>';
 
                 setTimeout(function() {
-                    document.getElementById("loading").innerHTML = "<p></p>";
+                    // document.getElementById("loading").innerHTML = "<p></p>";
                     // You can add redirection to the App Store here when it's available
                 }, 2000);  // Show Coming Soon message for 2 seconds before redirecting
             } else {
                 // For non-mobile devices (desktop), show Coming Soon and App Store image
-                document.getElementById("loading").innerHTML = "<p id='coming-soon'>The Cruize App is almost here – coming soon!</p>";
+              //  document.getElementById("loading").innerHTML = "<p id='coming-soon'>The Cruize App is almost here – coming soon!</p>";
 
                 // Show App Store image
-                document.getElementById("loading1").innerHTML = '<img src="images/AppStore.png" alt="App Store">';
+               // document.getElementById("loading1").innerHTML = '<img src="images/AppStore.png" alt="App Store">';
                 // Add download text below the image
-                document.getElementById("loading1").innerHTML += '<p>Download available on App Store</p>';
+             //   document.getElementById("loading1").innerHTML += '<p>Download available on App Store</p>';
                 // Default URL for non-mobile devices (e.g., desktop)
                 setTimeout(function() {
-                    // window.location.href = "https://cruze.asia/";
+                  window.location.href = "https://cruze.asia/";
                 }, 2000);  // Delay before redirecting
             }
         }
