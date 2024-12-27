@@ -15,6 +15,8 @@
             margin: 0;
             background-color: #f4f4f4;
             font-family: Arial, sans-serif;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
         h1 {
@@ -23,11 +25,30 @@
             color: #333;
         }
 
+        /* Style for the loading message */
+        #loading {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Style for the coming soon message */
+        #coming-soon {
+            color: #d9534f;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Style for the images (Logo and App/Play Store logos) */
         img {
-            max-width: 150px;
+            max-width: 20%;
             height: auto;
             opacity: 0; /* Start hidden for animation */
             animation: fadeInScale 2s ease-out forwards; /* Apply fade and scale animation */
+            display: block;
+            margin: 0 auto;
         }
 
         /* Animation to fade and scale the image */
@@ -40,20 +61,6 @@
                 opacity: 1;
                 transform: scale(1); /* End at normal size */
             }
-        }
-
-        /* Style for the loading text or image */
-        #loading {
-            display: block;
-            margin-bottom: 20px;
-            font-size: 18px;
-            color: #555;
-        }
-
-        /* Optional Coming Soon style */
-        #coming-soon {
-            color: #d9534f;
-            font-weight: bold;
         }
 
         /* Animation for text fading in */
@@ -73,12 +80,44 @@
             }
         }
 
-        /* Style for the images in #loading1 */
+        /* Style for the images in #loading1 (App Store/Play Store images) */
         #loading1 img {
-            max-width: 200px;
+            max-width: 100px;
             margin-top: 10px;
             display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
+
+        /* Style for the text below images */
+        #loading1 p {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 18px;
+                margin-top: 15px;
+            }
+
+            #loading {
+                font-size: 16px;
+            }
+
+            #loading1 img {
+                max-width: 150px; /* Make the images smaller on mobile */
+            }
+
+            #loading2 p {
+                font-size: 14px; /* Adjust font size for small screens */
+            }
+        }
+
     </style>
     <script>
         // Function to handle redirection with a delay
@@ -94,7 +133,9 @@
                 document.getElementById("loading").innerHTML = "<p>Please stand by while we open the Google Play Store for you.</p>";
 
                 // Show Google Play Store image
-                document.getElementById("loading1").innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Google_Play_Logo_2012.png" alt="Google Play Store">';
+                document.getElementById("loading1").innerHTML = '<img src="images/GooglePlayStore.png" alt="Google Play Store">';
+                // Add download text below the image
+                document.getElementById("loading1").innerHTML += '<p>Download available on Google Play Store</p>';
 
                 setTimeout(function() {
                     window.location.href = "https://play.google.com/store/apps/details?id=com.cruze";
@@ -104,16 +145,25 @@
                 document.getElementById("loading").innerHTML = "<p id='coming-soon'>The Cruize App is almost here – coming soon!</p>";
 
                 // Show App Store image
-                document.getElementById("loading1").innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Apple_App_Store_%28logo%29.svg" alt="App Store">';
+                document.getElementById("loading1").innerHTML = '<img src="images/AppStore.png" alt="App Store">';
+                // Add download text below the image
+                document.getElementById("loading1").innerHTML += '<p>Download available on App Store</p>';
 
                 setTimeout(function() {
                     document.getElementById("loading").innerHTML = "<p></p>";
                     // You can add redirection to the App Store here when it's available
                 }, 2000);  // Show Coming Soon message for 2 seconds before redirecting
             } else {
+                // For non-mobile devices (desktop), show Coming Soon and App Store image
+                document.getElementById("loading").innerHTML = "<p id='coming-soon'>The Cruize App is almost here – coming soon!</p>";
+
+                // Show App Store image
+                document.getElementById("loading1").innerHTML = '<img src="images/AppStore.png" alt="App Store">';
+                // Add download text below the image
+                document.getElementById("loading1").innerHTML += '<p>Download available on App Store</p>';
                 // Default URL for non-mobile devices (e.g., desktop)
                 setTimeout(function() {
-                    window.location.href = "https://cruze.asia/";
+                    // window.location.href = "https://cruze.asia/";
                 }, 2000);  // Delay before redirecting
             }
         }
@@ -129,7 +179,7 @@
     </div>
 
     <!-- Logo with animation -->
-    <img src="logo.png" alt="Cruze Logo">
+    <img src="images/logo.png" alt="Cruze Logo">
 
     <!-- Loading Message or Image (This is shown first) -->
     <div id="loading">
