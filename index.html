@@ -37,7 +37,7 @@
 
         /* Style for the coming soon message */
         #coming-soon {
-            color: #d9534f;
+           color: #d9534f; 
             font-weight: bold;
             text-align: center;
         }
@@ -45,12 +45,12 @@
         /* Style for the images (Logo and App/Play Store logos) */
         img {
             width: 100%; /* Make images responsive */
-            max-width: 250px; /* Set a maximum size */
+            max-width: 300px; /* Set a maximum size */
             height: auto;
             opacity: 0; /* Start hidden for animation */
             animation: fadeInScale 2s ease-out forwards; /* Apply fade and scale animation */
             display: block;
-            margin: 20px auto;
+         /*   margin: 50px auto; */
         }
 
         /* Animation to fade and scale the image */
@@ -73,6 +73,27 @@
             text-align: center;
         }
 
+		#loading3 {
+            opacity: 0; /* Start with text hidden */
+            animation: fadeInText 2s ease-out forwards; /* Apply fade-in effect */
+            animation-delay: 2s; /* Delay the text animation to show after image */
+            text-align: center;
+        }
+		
+		#loading {
+            opacity: 0; /* Start with text hidden */
+            animation: fadeInText 2s ease-out forwards; /* Apply fade-in effect */
+            animation-delay: 2s; /* Delay the text animation to show after image */
+            text-align: center;
+        }
+		
+		#countdown {
+            opacity: 0; /* Start with text hidden */
+            animation: fadeInText 2s ease-out forwards; /* Apply fade-in effect */
+            animation-delay: 2s; /* Delay the text animation to show after image */
+            text-align: center;
+        }
+
         /* Animation for the loading text */
         @keyframes fadeInText {
             0% {
@@ -85,7 +106,15 @@
 
         /* Style for the images in #loading1 (App Store/Play Store images) */
         #loading1 img {
-            max-width: 100px; /* Make the images smaller on mobile */
+            max-width: 270px; /* Make the images smaller on mobile */
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+		
+		#loading3 img {
+            max-width: 300px; /* Make the images smaller on mobile */
             margin-top: 10px;
             display: block;
             margin-left: auto;
@@ -102,11 +131,20 @@
         }
  /* Style for the text below images */
         #loading2 p {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             text-align: center;
             color: #333;
-            margin-top: 10px;
+
+        }
+		
+		 /* Style for the countdown text */
+        #countdown {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+            text-align: center;
         }
 
         /* Responsive Design for smaller screens */
@@ -125,8 +163,12 @@
                 max-width: 100px; /* Make the images even smaller on mobile */
             }
 
+			#loading3 img {
+                max-width: 100px; /* Make the images even smaller on mobile */
+            }
+
             #loading2 p {
-                font-size: 18px; /* Adjust font size for small screens */
+                font-size: 20px; /* Adjust font size for small screens */
 				   font-weight: bold;
             }
         }
@@ -141,49 +183,99 @@
         document.getElementById("loading").style.display = "block";
 
         // Add the animation for the images and text
-        document.getElementById("loading").innerHTML = "<p>Please stand by while we open the store for you.</p>";
+    //    document.getElementById("loading").innerHTML = "<p>Please stand by while we open the store for you.</p>";
 
         // Check if device is Android, iOS, or other
         if (/android/i.test(userAgent)) {
             // For Android, update the message and redirect to Google Play Store
-            document.getElementById("loading").innerHTML = "<p>Please stand by while we open the Google Play Store for you.</p>";
+         //   document.getElementById("loading").innerHTML = "<p>Please stand by while we open the Google Play Store for you.</p>";
 
-            // Show Google Play Store image
-            document.getElementById("loading1").innerHTML = '<img src="images/GooglePlayStore.png" alt="Google Play Store">';
-            // Add download text below the image
-       //     document.getElementById("loading1").innerHTML += '<p>Download available on Google Play Store</p>';
+         	// Show App Store image
+            document.getElementById("loading1").innerHTML = '<img src="images/AppStore1.png" alt="App Store">';
+            
+			   // Show Google Play Store image
+            document.getElementById("loading3").innerHTML = '<img src="images/GooglePlayStore1.png" alt="Google Play Store">';
+			
+		
+           // Show countdown timer (Optional, can be removed for iOS)
+            document.getElementById("countdown").style.display = "block";
+            var countdown = 5;
+            document.getElementById("countdown").innerText = "Stay Tuned! Opening the store for you in " + countdown + " seconds...";
 
-            // Delay redirection to Play Store to match animation
+            // Start countdown for iOS (you can adjust logic here for iOS redirection if desired)
+            var countdownInterval = setInterval(function() {
+                countdown--;
+                document.getElementById("countdown").innerText = "Stay Tuned! Opening the store for you in " + countdown + " seconds...";
+
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval); // Stop the countdown
+                   // window.location.href = "https://cruze.asia/"; // Redirect after countdown (or set to App Store link when available)
+                }
+            }, 5000); // Update every 1 second
+			
             setTimeout(function() {
-                window.location.href = "https://play.google.com/store/apps/details?id=com.cruze";
-            }, 4000);  // Wait for 4 seconds (2s animation + 2s buffer)
+                window.location.href = "https://cruze.asia/";
+            }, 5000);  // Wait for 4 seconds (2s animation + 2s buffer)
         } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
-            // For iOS, show "Coming Soon" message and App Store image
-            document.getElementById("loading").innerHTML = "<p id='coming-soon'>The Cruze App is coming soon on App store!</p>";
+           // For Android, update the message and redirect to Google Play Store
+         //   document.getElementById("loading").innerHTML = "<p>Please stand by while we open the Google Play Store for you.</p>";
 
-            // Show App Store image
-            document.getElementById("loading1").innerHTML = '<img src="images/AppStore.png" alt="App Store">';
-            // Add download text below the image
-         //   document.getElementById("loading1").innerHTML += '<p>Download available on App Store</p>';
+         	// Show App Store image
+            document.getElementById("loading1").innerHTML = '<img src="images/AppStore1.png" alt="App Store">';
+            
+			   // Show Google Play Store image
+            document.getElementById("loading3").innerHTML = '<img src="images/GooglePlayStore1.png" alt="Google Play Store">';
+			
+		
+           // Show countdown timer (Optional, can be removed for iOS)
+            document.getElementById("countdown").style.display = "block";
+            var countdown = 5;
+            document.getElementById("countdown").innerText = "Comming Soon! Stay tuned to follow for more";
 
-            // Wait for animation then show Coming Soon message and redirect after delay
+            // Start countdown for iOS (you can adjust logic here for iOS redirection if desired)
+            var countdownInterval = setInterval(function() {
+                countdown--;
+                document.getElementById("countdown").innerText = "Comming Soon! Stay tuned to follow for more";
+
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval); // Stop the countdown
+                   // window.location.href = "https://cruze.asia/"; // Redirect after countdown (or set to App Store link when available)
+                }
+            }, 5000); // Update every 1 second
+			
             setTimeout(function() {
-                // You can add redirection to the App Store here when it's available
-				window.location.href = "https://cruze.asia/";
-            }, 4000);  // Wait for 4 seconds (2s animation + 2s buffer)
+                window.location.href = "https://cruze.asia/";
+            }, 5000);  // Wait for 4 seconds (2s animation + 2s buffer)
         } else {
-               // For Android, update the message and redirect to Google Play Store
-          //  document.getElementById("loading").innerHTML = "<p>Please stand by while we open the Google Play Store for you.</p>";
+          // For Android, update the message and redirect to Google Play Store
+         //   document.getElementById("loading").innerHTML = "<p>Please stand by while we open the Google Play Store for you.</p>";
 
-            // Show Google Play Store image
-        //    document.getElementById("loading1").innerHTML = '<img src="images/GooglePlayStore.png" alt="Google Play Store">';
-         // Add download text below the image
-          //  document.getElementById("loading1").innerHTML += '<p>Download available on App Store</p>';
+         	// Show App Store image
+            document.getElementById("loading1").innerHTML = '<img src="images/AppStore1.png" alt="App Store">';
+            
+			   // Show Google Play Store image
+            document.getElementById("loading3").innerHTML = '<img src="images/GooglePlayStore1.png" alt="Google Play Store">';
+			
+		
+           // Show countdown timer (Optional, can be removed for iOS)
+            document.getElementById("countdown").style.display = "block";
+            var countdown = 5;
+            document.getElementById("countdown").innerText = "Comming Soon! Stay tuned to follow for more";
 
-            // Default URL for non-mobile devices (e.g., desktop)
+            // Start countdown for iOS (you can adjust logic here for iOS redirection if desired)
+            var countdownInterval = setInterval(function() {
+                countdown--;
+                document.getElementById("countdown").innerText = "Comming Soon! Stay tuned to follow for more";
+
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval); // Stop the countdown
+                   // window.location.href = "https://cruze.asia/"; // Redirect after countdown (or set to App Store link when available)
+                }
+            }, 5000); // Update every 1 second
+			
             setTimeout(function() {
-               // window.location.href = "https://cruze.asia/";
-            }, 4000);  // Wait for 4 seconds (2s animation + 2s buffer)
+                window.location.href = "https://cruze.asia/";
+            }, 5000);  // Wait for 4 seconds (2s animation + 2s buffer)
         }
     }
 
@@ -193,22 +285,35 @@
 
 </head>
 <body>
-    <!-- Optional tagline -->
-    <div id="loading2">
-        <p>Your Ride. Your Fare.</p>
-    </div>
 
-    <!-- Logo with animation -->
+ <!-- Logo with animation -->
     <img src="images/logo.png" alt="Cruze Logo">
 
-    <!-- Loading Message or Image (This is shown first) -->
-    <div id="loading">
-        <p></p>
+    <!-- Optional tagline -->
+    <div id="loading2">
+        <p>Ur' Ride. Ur' Fare.</p>
     </div>
 
+<!-- Additional Loading Text -->
+    <div id="loading3">
+        <!-- The App Store or Play Store image will be injected here based on platform -->
+    </div>
+	
     <!-- Additional Loading Text -->
     <div id="loading1">
         <!-- The App Store or Play Store image will be injected here based on platform -->
+    </div> 
+	
+	
+	
+	 <!-- Countdown Timer -->
+    <div id="countdown" style="display:none;"></div>
+	
+	
+	 <!-- Loading Message or Image (This is shown first) -->
+    <div id="loading">
+        <p></p>
     </div>
+	
 </body>
 </html>
