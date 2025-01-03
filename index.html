@@ -203,12 +203,12 @@
            // Show countdown timer (Optional, can be removed for iOS)
             document.getElementById("countdown").style.display = "block";
             var countdown = 10;
-            document.getElementById("countdown").innerText = "Stay Tuned! Opening the Play store for you in " + countdown + " seconds...";
+            document.getElementById("countdown").innerText = "Stay Tuned! Opening the Google Play Store for you in " + countdown + " seconds...";
 
             // Start countdown for iOS (you can adjust logic here for iOS redirection if desired)
             var countdownInterval = setInterval(function() {
                 countdown--;
-                document.getElementById("countdown").innerText = "Stay Tuned! Opening the Play store for you in " + countdown + " seconds...";
+                document.getElementById("countdown").innerText = "Stay Tuned! Opening the Google Play Store for you in " + countdown + " seconds...";
 
                 if (countdown <= 0) {
                     clearInterval(countdownInterval); // Stop the countdown
@@ -231,12 +231,11 @@
            // Show countdown timer 
             document.getElementById("countdown").style.display = "block";
             var countdown = 20;
-            document.getElementById("countdown").innerText = "Stay Tuned! Comming soon to the App store. Follow us more on https://cruze.asia/";
+            document.getElementById("countdown").innerHTML = "Coming Soon on the iOS App Store. <br><br> Stay Tuned! <br><br>Follow us for more on <a href='https://cruze.asia/' target='_blank' style='color: #d9534f; font-weight: bold;'>cruze.asia</a>";
 
-            // Start countdown 
-            var countdownInterval = setInterval(function() {
-                countdown--;
-                document.getElementById("countdown").innerText = "Stay Tuned! Comming soon to the App store. Follow us more on https://cruze.asia/";
+    var countdownInterval = setInterval(function() {
+        countdown--;
+      document.getElementById("countdown").innerHTML = "Coming Soon on the iOS App Store. <br><br> Stay Tuned! <br><br>Follow us for more on <a href='https://cruze.asia/' target='_blank' style='color: #d9534f; font-weight: bold;'>cruze.asia</a>";
 
                 if (countdown <= 0) {
                     clearInterval(countdownInterval); // Stop the countdown
@@ -258,13 +257,12 @@
 		
            // Show countdown timer 
             document.getElementById("countdown").style.display = "block";
-            var countdown = 20;
-            document.getElementById("countdown").innerText = "Stay Tuned! Comming soon to the App store. Follow us more on https://cruze.asia/";
+             var countdown = 20;
+    document.getElementById("countdown").innerHTML = "Coming soon on the iOS app store. <br><br> Stay Tuned! <br><br>Follow us for more on <a href='https://cruze.asia/' target='_blank' style='color: #d9534f; font-weight: bold;'>cruze.asia</a>";
 
-            // Start countdown 
-            var countdownInterval = setInterval(function() {
-                countdown--;
-                document.getElementById("countdown").innerText = "Stay Tuned! Comming soon to the App store. Follow us more on https://cruze.asia/";
+    var countdownInterval = setInterval(function() {
+        countdown--;
+      document.getElementById("countdown").innerHTML = "Coming soon on the iOS app store. <br><br> Stay Tuned! <br><br>Follow us for more on <a href='https://cruze.asia/' target='_blank' style='color: #d9534f; font-weight: bold;'>cruze.asia</a>";
 
                 if (countdown <= 0) {
                     clearInterval(countdownInterval); // Stop the countdown
@@ -273,7 +271,7 @@
             }, 5000); // Update every 1 second
 			
             setTimeout(function() {
-                window.location.href = "https://cruze.asia/";
+           //     window.location.href = "https://cruze.asia/";
             }, 5000);  // Wait for 4 seconds (2s animation + 2s buffer)
         }
     }
