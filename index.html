@@ -197,12 +197,13 @@
             document.getElementById("loading1").innerHTML = '<img src="images/AppStore1.png" alt="App Store">';
             
 			   // Show Google Play Store image
-            document.getElementById("loading3").innerHTML = '<img src="images/GooglePlayStore1.png" alt="Google Play Store">';
+        //    document.getElementById("loading3").innerHTML = '<img src="images/GooglePlayStore1.png" alt="Google Play Store">';
 			
-		
+		document.getElementById("loading3").innerHTML = '<a href="https://play.google.com/store/apps/details?id=com.cruze" target="_blank"><img src="images/GooglePlayStore1.png" alt="Google Play Store"></a>';
+
            // Show countdown timer (Optional, can be removed for iOS)
             document.getElementById("countdown").style.display = "block";
-            var countdown = 10;
+            var countdown = 5;
             document.getElementById("countdown").innerText = "Stay Tuned! Opening the Google Play Store for you in " + countdown + " seconds...";
 
             // Start countdown for iOS (you can adjust logic here for iOS redirection if desired)
@@ -216,7 +217,8 @@
             }, 5000); // Update every 1 second
 			
             setTimeout(function() {
-                window.location.href = "https://cruze.asia/";
+               // window.location.href = "https://cruze.asia/";
+                window.location.href = "https://play.google.com/store/apps/details?id=com.cruze";
             }, 5000);  // Wait for 4 seconds (2s animation + 2s buffer)
         } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
            // For Android, update the message and redirect to Google Play Store
