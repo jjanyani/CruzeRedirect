@@ -190,7 +190,7 @@
         // Add the animation for the images and text
 
         // Check if device is Android, iOS, or other
-        if (/android/i|/Windows/i.test(userAgent)) {
+        if (/android|Windows/i.test(userAgent)) {
             // For Android, update the message and redirect to Google Play Store
        
          	// Show App Store image
@@ -221,7 +221,7 @@
              //  // window.location.href = "https://cruze.asia/";
            //     window.location.href = "https://play.google.com/store/apps/details?id=com.cruze";
             //}, 5000);  // Wait for 4 seconds (2s animation + 2s buffer)
-        } else if (/iPhone|iPad|iPod/i|/Macintosh/i.test(userAgent)) {
+        } else if (/iPhone|iPad|iPod|Macintosh/i.test(userAgent)) {
            // For Android, update the message and redirect to Google Play Store
         
          	// Show App Store image
